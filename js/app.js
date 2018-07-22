@@ -29,7 +29,7 @@ class Enemy {
       if (Player.x < Enemy.x && Player.x > Enemy.x && Player.y < Enemy.y && Player.y > Enemy.y){
         player(100,300);
       }
-    }*/
+    }
 
 // Draw the enemy on the screen, required method for game
     render () {
@@ -55,7 +55,25 @@ class Player {
     render () {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
+
+    handleInput(allowedKeys){
+      if (allowedKeys === 'left'){
+        this.x -= 100;
+      }
+      if (allowedKeys === 'right'){
+        this.x += 100;
+      }
+      if (allowedKeys === 'up'){
+        this.y -= 80;
+      }
+      if (allowedKeys === 'down'){
+        this.y += 80;
+      }
+    }
+
+    
 };
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
