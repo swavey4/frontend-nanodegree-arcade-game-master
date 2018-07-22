@@ -13,12 +13,23 @@ class Enemy {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
     update (dt) {
-      this.y += this.speed * dt;
+      this.x += this.speed * dt;
+
+      if (this.x > 505){
+         this.x = 0;
+      }
 
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
     }
+
+// Handles collision with the player method
+    collision (){
+      if (Player.x < Enemy.x && Player.x > Enemy.x && Player.y < Enemy.y && Player.y > Enemy.y){
+        player(100,300);
+      }
+    }*/
 
 // Draw the enemy on the screen, required method for game
     render () {
@@ -51,6 +62,8 @@ class Player {
 const allEnemies = [];
 // Place the player object in a variable called player
 const player = new Player(100,300);
+const enemyA = new Enemy(60, 200);
+allEnemies.push(enemyA);
 
 
 
