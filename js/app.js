@@ -3,10 +3,10 @@ class Enemy {
     // Variables applied to each of our instances go here
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    constructor(x,y){
+    constructor(x,y, speed){
       this.x = x;
       this.y = y;
-      this.speed = Math.round(Math.random() * 3) + 1;
+      this.speed = speed;
       this.sprite = 'images/enemy-bug.png';
     }
 
@@ -22,15 +22,18 @@ class Enemy {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    }
+
 
 // Handles collision with the player method
-    collision (){
-      if (Player.x < Enemy.x && Player.x > Enemy.x && Player.y < Enemy.y && Player.y > Enemy.y){
-        player(100,300);
-      }
-    }
+      if (player.x < this.x + 80 &&
+          player.x + 80 > this.x &&
+          player.y < this.y + 60 &&
+          60 + player.y > this.y) {
+            player.x = 202;
+            player.y = 405;
+          }
 
+    }
 // Draw the enemy on the screen, required method for game
     render () {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -57,21 +60,25 @@ class Player {
     }
 
     handleInput(allowedKeys){
-      if (allowedKeys === 'left'){
+      if (allowedKeys === 'left' && this.x > 0){
         this.x -= 100;
       }
-      if (allowedKeys === 'right'){
+      if (allowedKeys === 'right' && this.x < 350){
         this.x += 100;
       }
-      if (allowedKeys === 'up'){
+      if (allowedKeys === 'up' && this.y > 10){
         this.y -= 80;
       }
-      if (allowedKeys === 'down'){
+      if (allowedKeys === 'down' && this.y < 350){
         this.y += 80;
+      }
+      if (this.y < 0){
+          alert('congrats!');
+
       }
     }
 
-    
+
 };
 
 
@@ -80,7 +87,7 @@ class Player {
 const allEnemies = [];
 // Place the player object in a variable called player
 const player = new Player(100,300);
-const enemyA = new Enemy(60, 200);
+const enemyA = new Enemy(60, 200, 50);
 allEnemies.push(enemyA);
 
 
