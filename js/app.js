@@ -3,10 +3,10 @@ class Enemy {
     // Variables applied to each of our instances go here
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    constructor(x,y, speed){
+    constructor(x,y){
       this.x = x;
       this.y = y;
-      this.speed = speed;
+      this.speed = 100;
       this.sprite = 'images/enemy-bug.png';
     }
 
@@ -15,6 +15,7 @@ class Enemy {
     update (dt) {
       this.x += this.speed * dt;
 
+// Loop the enemy object
       if (this.x > 505){
          this.x = 0;
       }
@@ -87,8 +88,12 @@ class Player {
 const allEnemies = [];
 // Place the player object in a variable called player
 const player = new Player(100,300);
-const enemyA = new Enemy(60, 200, 50);
+const enemyA = new Enemy(60, 60);
 allEnemies.push(enemyA);
+const enemyB = new Enemy(60, 145);
+allEnemies.push(enemyB);
+const enemyC = new Enemy(60, 225);
+allEnemies.push(enemyC);
 
 
 
