@@ -6,7 +6,7 @@ class Enemy {
     constructor(x,y){
       this.x = x;
       this.y = y;
-      this.speed = 100;
+      this.speed = Math.floor(Math.random()* Math.floor(200));
       this.sprite = 'images/enemy-bug.png';
     }
 
@@ -30,8 +30,8 @@ class Enemy {
           player.x + 80 > this.x &&
           player.y < this.y + 60 &&
           60 + player.y > this.y) {
-            player.x = 202;
-            player.y = 405;
+            player.x = 205;
+            player.y = 350;
           }
 
     }
@@ -67,14 +67,15 @@ class Player {
       if (allowedKeys === 'right' && this.x < 350){
         this.x += 100;
       }
-      if (allowedKeys === 'up' && this.y > 10){
-        this.y -= 80;
+      if (allowedKeys === 'up' && this.y > 0){
+        this.y -= 85;
       }
       if (allowedKeys === 'down' && this.y < 350){
-        this.y += 80;
+        this.y += 85;
       }
       if (this.y < 0){
           alert('congrats!');
+          window.location.reload(true);
 
       }
     }
