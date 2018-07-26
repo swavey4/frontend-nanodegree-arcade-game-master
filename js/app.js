@@ -1,3 +1,4 @@
+'use strict'
 // Enemies our player must avoid
 class Enemy {
     // Variables applied to each of our instances go here
@@ -6,6 +7,7 @@ class Enemy {
     constructor(x,y){
       this.x = x;
       this.y = y;
+      // Got this code idea from MDN website
       this.speed = Math.floor(Math.random()* Math.floor(200));
       this.sprite = 'images/enemy-bug.png';
     }
@@ -26,12 +28,13 @@ class Enemy {
 
 
 // Handles collision with the player method
-      if (player.x < this.x + 80 &&
-          player.x + 80 > this.x &&
-          player.y < this.y + 60 &&
-          60 + player.y > this.y) {
-            player.x = 205;
-            player.y = 350;
+      if (player.x < this.x + 70 &&
+          player.x + 70 > this.x &&
+          player.y < this.y + 50 &&
+          50 + player.y > this.y) {
+            alert('collison');
+            player.x = 100;
+            player.y = 300;
           }
 
     }
